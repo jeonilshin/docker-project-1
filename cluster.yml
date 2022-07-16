@@ -1,0 +1,25 @@
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: demo-cluster
+  region: ap-northeast-1
+
+vpc:
+  id: "vpc-0318cf4ac0964fb5c"
+  subnets:
+    private:
+      private-a:
+          id: "subnet-04b837c17ab2f34dc"
+      private-c:
+          id: "subnet-0fbd24df35bb7037e"
+managedNodeGroup:
+- name: kubernetes
+  instanceType: t3.small
+  desiredCapacity: 2
+  privateNetworking: true
+  ssh:
+    publicKeyName: 13T
+subnet:
+  - private-a
+  - private-c
